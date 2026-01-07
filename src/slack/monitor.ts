@@ -873,7 +873,10 @@ export async function monitorSlackProvider(opts: MonitorSlackOpts = {}) {
     const { dispatcher, replyOptions, markDispatchIdle } =
       createReplyDispatcherWithTyping({
         responsePrefix: cfg.messages?.responsePrefix,
-        deliver: async (payload) => {
+        deliver: async (payload, info) => {
+          if (info.kind !== "final" && cfg.messages?.toolMessageLogging === false) {
+            return;
+          }
           await deliverReplies({
             replies: [payload],
             target: replyTarget,
