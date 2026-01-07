@@ -539,8 +539,9 @@ Controls inbound/outbound prefixes and optional ack reactions.
 `responsePrefix` is applied to **all outbound replies** (tool summaries, block
 streaming, final replies) across providers unless already present.
 
-`toolMessageLogging` controls whether providers send intermediate tool-result/status
-messages. Set `messages.toolMessageLogging: false` to only send the final reply.
+`toolMessageLogging` controls whether providers send intermediate updates (tool results
+and streaming/block chunks). Set `messages.toolMessageLogging: false` to only send the
+final reply.
 
 `ackReaction` sends a best-effort emoji reaction to acknowledge inbound messages
 on providers that support reactions (Slack/Discord/Telegram). Defaults to the

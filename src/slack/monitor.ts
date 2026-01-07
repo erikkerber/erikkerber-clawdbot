@@ -754,7 +754,7 @@ export async function monitorSlackProvider(opts: MonitorSlackOpts = {}) {
     const dispatcher = createReplyDispatcher({
       responsePrefix: cfg.messages?.responsePrefix,
       deliver: async (payload, info) => {
-        if (info.kind === "tool" && cfg.messages?.toolMessageLogging === false) {
+        if (info.kind !== "final" && cfg.messages?.toolMessageLogging === false) {
           return;
         }
         await deliverReplies({

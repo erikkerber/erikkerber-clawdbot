@@ -148,6 +148,7 @@ describe("monitorSlackProvider tool results", () => {
 
     replyMock.mockImplementation(async (_ctx, opts) => {
       await opts?.onToolResult?.({ text: "tool update" });
+      await opts?.onBlockReply?.({ text: "partial" });
       return { text: "final reply" };
     });
 

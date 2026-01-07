@@ -1138,7 +1138,7 @@ export async function monitorWebProvider(
           }
         },
         deliver: async (payload, info) => {
-          if (info.kind === "tool" && cfg.messages?.toolMessageLogging === false) {
+          if (info.kind !== "final" && cfg.messages?.toolMessageLogging === false) {
             return;
           }
           await deliverWebReply({
